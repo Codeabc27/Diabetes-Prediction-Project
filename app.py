@@ -1,9 +1,17 @@
 from flask import Flask, render_template, request
 import joblib
 import numpy as np
+import os
 
 # Load trained model
-model = joblib.load("logistic_regression_diabetes_model.joblib")
+MODEL_PATH = os.path.join(
+    os.path.dirname(__file__), "model", "logistic_regression_diabetes_model.joblib"
+)
+try:
+    model = joblib.load(MODEL_PATH)
+except Exception as e:
+    # Fail fast with a clear message so developer can fix the path or reinstall dependencies
+    raise RuntimeError(f"Failed to load model from '{MODEL_PATH}': {e}")
 
 app = Flask(__name__)
 

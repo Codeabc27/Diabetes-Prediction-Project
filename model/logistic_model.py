@@ -5,7 +5,10 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 import joblib
 import os
 
-file_path = os.path.join(os.path.dirname(__file__), "data", "diabetes.csv")
+# Locate dataset relative to project root (one level up from this module)
+file_path = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "data", "diabetes.csv")
+)
 
 df = pd.read_csv(file_path)
 
@@ -35,7 +38,9 @@ print(classification_report(y_test, y_pred))
 print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, y_pred))
 
-model_filename = "logistic_regression_diabetes_model.joblib"
+model_filename = os.path.join(
+    os.path.dirname(__file__), "logistic_regression_diabetes_model.joblib"
+)
 joblib.dump(model, model_filename)
 
-print(f"Model successfully exported as '{model_filename}'") # Current working directory
+print(f"Model successfully exported as '{model_filename}'")
