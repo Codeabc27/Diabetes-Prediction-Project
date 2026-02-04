@@ -1,169 +1,81 @@
-🩺 Diabetes Prediction ML Project
+# Diabetes Prediction Web App 🔬
 
-A Machine Learning web application that predicts whether a person has diabetes based on medical parameters.
+**Simple, lightweight web app** that predicts diabetes using a trained logistic regression model. Built with **Flask** and scikit-learn, the app provides a minimal UI for entering patient features and getting a prediction.
 
-This project is built using Python, Scikit-learn, Pandas, NumPy, and Flask and uses the PIMA Indians Diabetes Dataset.
+---
 
-📌 Project Overview
+## Features ✅
 
-Diabetes is a serious health condition that affects millions of people worldwide. Early detection helps in proper treatment and prevention.
+- Web form for entering 8 clinical features (Pregnancies, Glucose, Blood Pressure, Skin Thickness, Insulin, BMI, Diabetes Pedigree Function, Age)
+- Uses a pre-trained Logistic Regression model (`logistic_regression_diabetes_model.joblib`)
+- Easy to retrain using `model/logistic_model.py` and the included dataset
 
-This project uses a trained Machine Learning classification model to predict whether a person is diabetic or not based on input health features.
+---
 
-🚀 Features
+## Quick Start 🔧
 
-Data Cleaning & Preprocessing
+1. Create and activate a virtual environment:
 
-Exploratory Data Analysis (EDA)
+```bash
+python -m venv .venv
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
 
-Machine Learning Model Training
+2. Install dependencies (from `pyproject.toml`):
 
-Model Evaluation (Accuracy, Confusion Matrix, etc.)
+```bash
+pip install -e .
+# or install required packages directly
+pip install flask joblib numpy pandas scikit-learn pyngrok
+```
 
-Model saved using Joblib
+3. Run the app:
 
-Simple and user-friendly web interface
-
-📊 Dataset Information
-
-The dataset used: PIMA Indians Diabetes Dataset
-
-🔹 Input Features:
-
-Pregnancies
-
-Glucose
-
-Blood Pressure
-
-Skin Thickness
-
-Insulin
-
-BMI
-
-Diabetes Pedigree Function
-
-Age
-
-🎯 Target:
-
-0 → Non-Diabetic
-
-1 → Diabetic
-
-🧠 Machine Learning Algorithms Used
-
-Logistic Regression
-
-Random Forest Classifier
-
-Decision Tree
-
-Support Vector Machine
-
-The best-performing model is selected based on accuracy.
-
-📂 Project Structure
-Diabetes-Prediction-ML-Project/
-│
-├── data/
-│   └── diabetes.csv
-│
-├── model/
-│   └── diabetes_model.joblib
-│
-├── templates/
-│   └── index.html
-│
-├── app.py
-├── train_model.py
-├── requirements.txt
-└── README.md
-
-⚙️ Installation & Setup
-1️⃣ Clone the Repository
-git clone https://github.com/Codeabc27/Diabetes-Prediction-ML-Project.git
-cd Diabetes-Prediction-ML-Project
-
-2️⃣ Create Virtual Environment
-python -m venv venv
-
-
-Activate it:
-
-Windows:
-
-venv\Scripts\activate
-
-
-Mac/Linux:
-
-source venv/bin/activate
-
-3️⃣ Install Dependencies
-pip install -r requirements.txt
-
-▶️ Run the Application
+```bash
 python app.py
+```
 
+Open http://127.0.0.1:5000 in your browser and use the form to get predictions.
 
-Open your browser and go to:
+---
 
-http://127.0.0.1:5000/
+## Retraining the model 💾
 
-📈 Model Training
+To retrain using the provided dataset (`data/diabetes.csv`):
 
-To retrain the model:
+```bash
+python model/logistic_model.py
+```
 
-python train_model.py
+The script trains a Logistic Regression model, prints evaluation metrics, and exports the model as `logistic_regression_diabetes_model.joblib`.
 
+Note: the training script expects to find the CSV at `model/data/diabetes.csv` relative to the script; if running from the project root, ensure the file path is correct or adjust the script accordingly.
 
-The trained model will be saved inside:
+---
 
-model/diabetes_model.joblib
+## Project Structure 📁
 
-📊 Model Evaluation Metrics
+- `app.py` — Flask application
+- `model/logistic_model.py` — training script
+- `logistic_regression_diabetes_model.joblib` — trained model
+- `templates/index.html` — web UI
+- `data/diabetes.csv` — dataset (Pima Indians Diabetes)
 
-Accuracy Score
+---
 
-Confusion Matrix
+## Input fields (form) 📝
 
-Precision
+- `pregnancies`, `glucose`, `bloodpressure`, `skinthickness`, `insulin`, `bmi`, `dpf`, `age`
 
-Recall
+These are submitted via the web form to `/predict` and returned as `Prediction: Diabetes` or `Prediction: No Diabetes`.
 
-F1 Score
+---
 
-🛠 Technologies Used
+## License & Contributing 🤝
 
-Python
+This project is provided as-is for learning and demo purposes. Contributions, fixes, and improvements are welcome — please open an issue or a pull request.
 
-Pandas
+---
 
-NumPy
-
-Matplotlib / Seaborn
-
-Scikit-learn
-
-Flask
-
-Joblib
-
-🔮 Future Improvements
-
-Deploy to Render / AWS / Heroku
-
-Improve UI design
-
-Add model comparison dashboard
-
-Add REST API support
-
-Improve prediction accuracy
-
-👨‍💻 Author
-
-deadpool
-GitHub: https://github.com/Codeabc27
+**Happy testing!**  ✨
