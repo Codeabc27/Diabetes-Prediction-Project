@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 import joblib
 import os
 
-file_path = os.path.join(os.path.dirname(__file__), "diabetes.csv")
+file_path = os.path.join(os.path.dirname(__file__), "data", "diabetes.csv")
 
 df = pd.read_csv(file_path)
 
